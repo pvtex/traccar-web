@@ -47,12 +47,14 @@ const SettingsMenu = () => {
         />
         {!readonly && (
           <>
+            {admin && (
             <MenuItem
               title={t('sharedNotifications')}
               link="/settings/notifications"
               icon={<NotificationsIcon />}
               selected={location.pathname.startsWith('/settings/notification')}
             />
+            )}
             <MenuItem
               title={t('settingsUser')}
               link={`/settings/user/${userId}`}

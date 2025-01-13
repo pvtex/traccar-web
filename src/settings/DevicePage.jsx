@@ -76,15 +76,18 @@ const DevicePage = () => {
                 onChange={(event) => setItem({ ...item, name: event.target.value })}
                 label={t('sharedName')}
               />
-              <TextField
-                value={item.uniqueId || ''}
-                onChange={(event) => setItem({ ...item, uniqueId: event.target.value })}
-                label={t('deviceIdentifier')}
-                helperText={t('deviceIdentifierHelp')}
-                disabled={Boolean(uniqueId)}
-              />
+              {admin && (
+                <TextField
+                  value={item.uniqueId || ''}
+                  onChange={(event) => setItem({ ...item, uniqueId: event.target.value })}
+                  label={t('deviceIdentifier')}
+                  helperText={t('deviceIdentifierHelp')}
+                  disabled={Boolean(uniqueId)}
+                />
+	      )}
             </AccordionDetails>
           </Accordion>
+          {admin && (  
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography variant="subtitle1">
@@ -146,6 +149,7 @@ const DevicePage = () => {
               />
             </AccordionDetails>
           </Accordion>
+          )} 
           {item.id && (
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>

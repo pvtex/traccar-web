@@ -10,7 +10,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import AddIcon from '@mui/icons-material/Add';
 import TuneIcon from '@mui/icons-material/Tune';
 import { useTranslation } from '../common/components/LocalizationProvider';
-import { useDeviceReadonly } from '../common/util/permissions';
+import { useAdministrator, useDeviceReadonly } from '../common/util/permissions';
 import DeviceRow from './DeviceRow';
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +45,7 @@ const MainToolbar = ({
   const navigate = useNavigate();
   const t = useTranslation();
 
+  const admin = useAdministrator();
   const deviceReadonly = useDeviceReadonly();
 
   const groups = useSelector((state) => state.groups.items);
@@ -168,11 +169,13 @@ const MainToolbar = ({
           </FormGroup>
         </div>
       </Popover>
+      {admin && (
       <IconButton edge="end" onClick={() => navigate('/settings/device')} disabled={deviceReadonly}>
-        <Tooltip open={!deviceReadonly && Object.keys(devices).length === 0} title={t('deviceRegisterFirst')} arrow>
+        <Tooltip open={admin && Object.keys(devices).length === 0} title={t('deviceRegisterFirst')} arrow>
           <AddIcon />
         </Tooltip>
       </IconButton>
+      )}
     </Toolbar>
   );
 };
