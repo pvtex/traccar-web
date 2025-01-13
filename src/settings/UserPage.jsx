@@ -183,12 +183,14 @@ const UserPage = () => {
                 onChange={(e) => setItem({ ...item, phone: e.target.value })}
                 label={t('sharedPhone')}
               />
+              {admin && (
               <FormControl>
                 <InputLabel>{t('mapDefault')}</InputLabel>
                 <Select
                   label={t('mapDefault')}
                   value={item.map || 'locationIqStreets'}
                   onChange={(e) => setItem({ ...item, map: e.target.value })}
+                  disabled={!admin}
                 >
                   {mapStyles.filter((style) => style.available).map((style) => (
                     <MenuItem key={style.id} value={style.id}>
@@ -197,6 +199,8 @@ const UserPage = () => {
                   ))}
                 </Select>
               </FormControl>
+              )}
+              {admin && (
               <FormControl>
                 <InputLabel>{t('settingsCoordinateFormat')}</InputLabel>
                 <Select
@@ -209,6 +213,7 @@ const UserPage = () => {
                   <MenuItem value="dms">{t('sharedDegreesMinutesSeconds')}</MenuItem>
                 </Select>
               </FormControl>
+              )}
               <FormControl>
                 <InputLabel>{t('settingsSpeedUnit')}</InputLabel>
                 <Select
@@ -244,6 +249,7 @@ const UserPage = () => {
                   <MenuItem value="ft">{t('sharedFeet')}</MenuItem>
                 </Select>
               </FormControl>
+              {admin && (
               <FormControl>
                 <InputLabel>{t('settingsVolumeUnit')}</InputLabel>
                 <Select
@@ -256,6 +262,7 @@ const UserPage = () => {
                   <MenuItem value="impGal">{t('sharedImpGallon')}</MenuItem>
                 </Select>
               </FormControl>
+              )}
               <SelectField
                 value={item.attributes && item.attributes.timezone}
                 onChange={(e) => setItem({ ...item, attributes: { ...item.attributes, timezone: e.target.value } })}
@@ -264,13 +271,17 @@ const UserPage = () => {
                 titleGetter={(it) => it}
                 label={t('sharedTimezone')}
               />
+              {admin && (
               <TextField
                 value={item.poiLayer || ''}
                 onChange={(e) => setItem({ ...item, poiLayer: e.target.value })}
+                disabled={!admin}
                 label={t('mapPoiLayer')}
               />
+              )}
             </AccordionDetails>
           </Accordion>
+          { admin && (
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography variant="subtitle1">
@@ -313,6 +324,8 @@ const UserPage = () => {
               </Button>
             </AccordionDetails>
           </Accordion>
+          )}
+          {admin && (
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography variant="subtitle1">
@@ -384,6 +397,7 @@ const UserPage = () => {
               </FormGroup>
             </AccordionDetails>
           </Accordion>
+          )}
           <EditAttributesAccordion
             attribute={attribute}
             attributes={item.attributes}

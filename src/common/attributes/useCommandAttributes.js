@@ -210,4 +210,18 @@ export default (t) => useMemo(() => ({
       type: 'string',
     },
   ],
+  lightDuration: [
+    {
+      key: 'duration',
+      name: t('commandLightDuration'),
+      type: 'number',
+    },
+  ],
+  buzzerDuration: [
+    {
+      key: 'duration',
+      name: t('commandBuzzerDuration'),
+      type: 'number',
+    },
+  ],
 }), [t]);

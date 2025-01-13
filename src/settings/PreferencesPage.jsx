@@ -18,7 +18,7 @@ import useMapStyles from '../map/core/useMapStyles';
 import useMapOverlays from '../map/overlay/useMapOverlays';
 import { useCatch } from '../reactHelper';
 import { sessionActions } from '../store';
-import { useAdministrator, useRestriction } from '../common/util/permissions';
+import { useAdministrator, useRestriction, useManager } from '../common/util/permissions';
 import useSettingsStyles from './common/useSettingsStyles';
 
 const deviceFields = [
@@ -36,6 +36,7 @@ const PreferencesPage = () => {
   const t = useTranslation();
 
   const admin = useAdministrator();
+  const manager = useManager();
   const readonly = useRestriction('readonly');
 
   const user = useSelector((state) => state.session.user);
@@ -104,6 +105,7 @@ const PreferencesPage = () => {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails className={classes.details}>
+                {manager && (
                 <FormControl>
                   <InputLabel>{t('mapActive')}</InputLabel>
                   <Select
@@ -118,6 +120,7 @@ const PreferencesPage = () => {
                         navigate(`/settings/user/${user.id}?${query.toString()}`);
                       }
                     }}
+                    disabled={!admin}
                     multiple
                   >
                     {mapStyles.map((style) => (
@@ -127,6 +130,8 @@ const PreferencesPage = () => {
                     ))}
                   </Select>
                 </FormControl>
+                )}
+                {manager && (
                 <FormControl>
                   <InputLabel>{t('mapOverlay')}</InputLabel>
                   <Select
@@ -141,6 +146,7 @@ const PreferencesPage = () => {
                         navigate(`/settings/user/${user.id}?${query.toString()}`);
                       }
                     }}
+                    disabled={!admin}
                   >
                     <MenuItem value="">{'\u00a0'}</MenuItem>
                     {mapOverlays.map((overlay) => (
@@ -150,12 +156,13 @@ const PreferencesPage = () => {
                     ))}
                   </Select>
                 </FormControl>
+                )}
                 <Autocomplete
                   multiple
                   freeSolo
                   options={Object.keys(positionAttributes)}
                   getOptionLabel={(option) => (positionAttributes[option]?.name || option)}
-                  value={attributes.positionItems?.split(',') || ['fixTime', 'address', 'speed', 'totalDistance']}
+                  value={attributes.positionItems?.split(',') || ['fixTime', 'address', 'speed', 'totalDistance', 'batteryLevel', 'valid']}
                   onChange={(_, option) => {
                     setAttributes({ ...attributes, positionItems: option.join(',') });
                   }}
@@ -237,6 +244,7 @@ const PreferencesPage = () => {
                 </FormGroup>
               </AccordionDetails>
             </Accordion>
+            {manager && (
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography variant="subtitle1">
@@ -247,6 +255,7 @@ const PreferencesPage = () => {
                 <SelectField
                   value={attributes.devicePrimary || 'name'}
                   onChange={(e) => setAttributes({ ...attributes, devicePrimary: e.target.value })}
+                  disabled={!admin}
                   data={deviceFields}
                   titleGetter={(it) => t(it.name)}
                   label={t('devicePrimaryInfo')}
@@ -254,12 +263,15 @@ const PreferencesPage = () => {
                 <SelectField
                   value={attributes.deviceSecondary}
                   onChange={(e) => setAttributes({ ...attributes, deviceSecondary: e.target.value })}
+                  disabled={!admin}
                   data={deviceFields}
                   titleGetter={(it) => t(it.name)}
                   label={t('deviceSecondaryInfo')}
                 />
               </AccordionDetails>
             </Accordion>
+            )}
+            {manager && (
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography variant="subtitle1">
@@ -271,6 +283,7 @@ const PreferencesPage = () => {
                   multiple
                   value={attributes.soundEvents?.split(',') || []}
                   onChange={(e) => setAttributes({ ...attributes, soundEvents: e.target.value.join(',') })}
+                  disabled={!admin}
                   endpoint="/api/notifications/types"
                   keyGetter={(it) => it.type}
                   titleGetter={(it) => t(prefixString('event', it.type))}
@@ -280,14 +293,17 @@ const PreferencesPage = () => {
                   multiple
                   value={attributes.soundAlarms?.split(',') || ['sos']}
                   onChange={(e) => setAttributes({ ...attributes, soundAlarms: e.target.value.join(',') })}
+                  disabled={!admin}
                   data={alarms}
                   keyGetter={(it) => it.key}
                   label={t('eventsSoundAlarms')}
                 />
               </AccordionDetails>
             </Accordion>
+            )}
           </>
         )}
+        {manager && (
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="subtitle1">
@@ -303,6 +319,7 @@ const PreferencesPage = () => {
                 setTokenExpiration(e.target.value);
                 setToken(null);
               }}
+              disabled={!admin}
             />
             <FormControl>
               <OutlinedInput
@@ -314,19 +331,21 @@ const PreferencesPage = () => {
                 endAdornment={(
                   <InputAdornment position="end">
                     <div className={classes.verticalActions}>
-                      <IconButton size="small" edge="end" onClick={generateToken} disabled={!!token}>
+                      <IconButton size="small" edge="end" onClick={generateToken} disabled={!!token || !admin}>
                         <CachedIcon fontSize="small" />
                       </IconButton>
-                      <IconButton size="small" edge="end" onClick={() => navigator.clipboard.writeText(token)} disabled={!token}>
+                      <IconButton size="small" edge="end" onClick={() => navigator.clipboard.writeText(token)} disabled={!token || !admin}>
                         <ContentCopyIcon fontSize="small" />
                       </IconButton>
                     </div>
                   </InputAdornment>
                 )}
+                disabled={!admin}
               />
             </FormControl>
           </AccordionDetails>
         </Accordion>
+        )}
         {!readonly && (
           <>
             <Accordion>
@@ -355,6 +374,7 @@ const PreferencesPage = () => {
                   variant="outlined"
                   color="primary"
                   onClick={() => navigate('/emulator')}
+                  disabled={!admin}
                 >
                   {t('sharedEmulator')}
                 </Button>

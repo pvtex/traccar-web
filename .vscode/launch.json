@@ -14,6 +14,27 @@
       "runtimeArgs": ["run", "build"],
       "runtimeExecutable": "npm",
       "type": "node"
+    },
+    {
+      "name": "npm create vite@latest",
+      "request": "launch",
+      "runtimeArgs": ["create", "vite@latest"],
+      "runtimeExecutable": "npm",
+      "type": "node"
+    },
+    {
+      "name": "npm install",
+      "request": "launch",
+      "runtimeArgs": ["install"],
+      "runtimeExecutable": "npm",
+      "type": "node"
+    },
+    {
+      "name": "vite build",
+      "request": "launch",
+      "runtimeArgs": ["build"],
+      "runtimeExecutable": "vite",
+      "type": "node"
     }
   ]
 }

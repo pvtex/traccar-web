@@ -14,7 +14,7 @@ import CollectionActions from './components/CollectionActions';
 import TableShimmer from '../common/components/TableShimmer';
 import SearchHeader, { filterByKeyword } from './components/SearchHeader';
 import { formatTime } from '../common/util/formatter';
-import { useDeviceReadonly, useManager } from '../common/util/permissions';
+import { useDeviceReadonly, useManager, useAdministrator } from '../common/util/permissions';
 import useSettingsStyles from './common/useSettingsStyles';
 import DeviceUsersValue from './components/DeviceUsersValue';
 import usePersistedState from '../common/util/usePersistedState';
@@ -26,6 +26,7 @@ const DevicesPage = () => {
 
   const groups = useSelector((state) => state.groups.items);
 
+  const admin = useAdministrator();
   const manager = useManager();
   const deviceReadonly = useDeviceReadonly();
 
@@ -69,9 +70,9 @@ const DevicesPage = () => {
           <TableRow>
             <TableCell>{t('sharedName')}</TableCell>
             <TableCell>{t('deviceIdentifier')}</TableCell>
-            <TableCell>{t('groupParent')}</TableCell>
-            <TableCell>{t('sharedPhone')}</TableCell>
-            <TableCell>{t('deviceModel')}</TableCell>
+            {admin && <TableCell>{t('groupParent')}</TableCell> }
+            {admin && <TableCell>{t('sharedPhone')}</TableCell>}
+            {admin && <TableCell>{t('deviceModel')}</TableCell>}
             <TableCell>{t('deviceContact')}</TableCell>
             <TableCell>{t('userExpirationTime')}</TableCell>
             {manager && <TableCell>{t('settingsUsers')}</TableCell>}
@@ -83,9 +84,9 @@ const DevicesPage = () => {
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.uniqueId}</TableCell>
-              <TableCell>{item.groupId ? groups[item.groupId]?.name : null}</TableCell>
-              <TableCell>{item.phone}</TableCell>
-              <TableCell>{item.model}</TableCell>
+              {admin &&  <TableCell>{item.groupId ? groups[item.groupId]?.name : null}</TableCell>}
+              {admin &&  <TableCell>{item.phone}</TableCell>}
+              {admin &&  <TableCell>{item.model}</TableCell>} 
               <TableCell>{item.contact}</TableCell>
               <TableCell>{formatTime(item.expirationTime, 'date')}</TableCell>
               {manager && <TableCell><DeviceUsersValue deviceId={item.id} /></TableCell>}
@@ -102,6 +103,7 @@ const DevicesPage = () => {
             </TableRow>
           )) : (<TableShimmer columns={manager ? 8 : 7} endAction />)}
         </TableBody>
+        {admin && (
         <TableFooter>
           <TableRow>
             <TableCell>
@@ -123,6 +125,7 @@ const DevicesPage = () => {
             </TableCell>
           </TableRow>
         </TableFooter>
+        )}
       </Table>
       <CollectionFab editPath="/settings/device" />
     </PageLayout>
