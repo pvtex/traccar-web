@@ -136,7 +136,7 @@
     "attributeWebLiveRouteLength": "Web: Länge der Liveroute",
     "attributeWebSelectZoom": "Web: Mit Auswahl vergrößern",
     "attributeWebMaxZoom": "Web: Maximaler Zoom",
-    "attributeTelegramChatId": "Telegram Chat ID",
+    "attributeTelegramChatId": "Kundennummer",
     "attributePushoverUserKey": "Pushover User Key",
     "attributePushoverDeviceNames": "Pushover Gerätenamen",
     "attributeMailSmtpHost": "Mail: SMTP Host",
