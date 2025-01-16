@@ -210,14 +210,28 @@ export default (t) => useMemo(() => ({
       type: 'string',
     },
   ],
-  light: [
+  lightOn: [
     {
       key: 'enable',
       name: t('commandEnable'),
       type: 'boolean',
     },
   ],
-  buzzer: [
+  lightOff: [
+    {
+      key: 'enable',
+      name: t('commandEnable'),
+      type: 'boolean',
+    },
+  ],
+  buzzerOn: [
+    {
+      key: 'enable',
+      name: t('commandEnable'),
+      type: 'boolean',
+    },
+  ],
+  buzzerOff: [
     {
       key: 'enable',
       name: t('commandEnable'),
