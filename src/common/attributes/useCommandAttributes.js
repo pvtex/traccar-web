@@ -227,7 +227,7 @@ export default (t) => useMemo(() => ({
   statusLed: [
     {
       key: 'enable',
-      name: t('commandStatusLed'),
+      name: t('commandEnable'),
       type: 'boolean',
     },
   ],
