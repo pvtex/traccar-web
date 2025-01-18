@@ -224,7 +224,7 @@ export default (t) => useMemo(() => ({
       type: 'number',
     },
   ],
-  statusLED: [
+  statusLed: [
     {
       key: 'enable',
       name: t('commandStatusLed'),
