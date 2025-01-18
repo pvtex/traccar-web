@@ -416,6 +416,7 @@
     "commandBuzzerOn": "Buzzer An",
     "commandBuzzerOff": "Buzzer Aus",
     "commandBuzzerDuration": "Buzzer Zeit",
+    "commandStatusLed": "Status LED",
     "commandTitle": "Befehl",
     "commandSend": "Senden",
     "commandSent": "Befehl gesendet",

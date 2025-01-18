@@ -224,4 +224,11 @@ export default (t) => useMemo(() => ({
       type: 'number',
     },
   ],
+  statusLED: [
+    {
+      key: 'enable',
+      name: t('commandStatusLed'),
+      type: 'boolean',
+    },
+  ],
 }), [t]);
