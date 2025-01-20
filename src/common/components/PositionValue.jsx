@@ -110,9 +110,11 @@ const PositionValue = ({ position, property, attribute }) => {
       return (
         <>
           {formatValue(value)}
-          &nbsp;&nbsp;
           {admin && (
-            <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+            <>
+              &nbsp;&nbsp;
+              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+            </>
           )}
         </>
       );
@@ -120,8 +122,12 @@ const PositionValue = ({ position, property, attribute }) => {
       return (
         <>
           {formatValue(value)}
-          &nbsp;&nbsp;
-          {admin && <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>}
+          {admin && (
+            <>
+              &nbsp;&nbsp;
+              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>
+            </>
+          )}
         </>
       );
     case 'network':
