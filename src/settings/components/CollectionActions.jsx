@@ -12,7 +12,6 @@ import RemoveDialog from '../../common/components/RemoveDialog';
 import { useTranslation } from '../../common/components/LocalizationProvider';
 import { useAdministrator } from '../../common/util/permissions';
 
-
 const useStyles = makeStyles(() => ({
   row: {
     display: 'flex',
@@ -68,14 +67,10 @@ const CollectionActions = ({
               <MenuItem onClick={() => handleCustom(action)} key={action.key}>{action.title}</MenuItem>
             ))}
             {!readonly && (
-              <>
-                <MenuItem onClick={handleEdit}>{t('sharedEdit')}</MenuItem>
-              </>
+              <MenuItem onClick={handleEdit}>{t('sharedEdit')}</MenuItem>
             )}
             {admin && (
-              <> 
-                <MenuItem onClick={handleRemove}>{t('sharedRemove')}</MenuItem>
-              </>
+              <MenuItem onClick={handleRemove}>{t('sharedRemove')}</MenuItem>
             )}
           </Menu>
         </>
@@ -89,22 +84,18 @@ const CollectionActions = ({
             </Tooltip>
           ))}
           {!readonly && (
-            <>
-              <Tooltip title={t('sharedEdit')}>
-                <IconButton size="small" onClick={handleEdit}>
-                  <EditIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </>
+            <Tooltip title={t('sharedEdit')}>
+              <IconButton size="small" onClick={handleEdit}>
+                <EditIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           )}
           {admin && (
-            <>
-              <Tooltip title={t('sharedRemove')}>
-                <IconButton size="small" onClick={handleRemove}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </>
+            <Tooltip title={t('sharedRemove')}>
+              <IconButton size="small" onClick={handleRemove}>
+                <DeleteIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           )}
         </div>
       )}

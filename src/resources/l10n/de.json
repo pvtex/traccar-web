@@ -209,6 +209,7 @@
     "devicePrimaryInfo": "Gerät Titel",
     "deviceSecondaryInfo": "Gerät Detail",
     "deviceIdentifier": "Kennung",
+    "deviceGroup": "Gruppe",
     "deviceModel": "Modell",
     "deviceContact": "Kontakt",
     "deviceCategory": "Symbol",

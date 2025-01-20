@@ -84,9 +84,9 @@ const DevicesPage = () => {
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.uniqueId}</TableCell>
-              {admin &&  <TableCell>{item.groupId ? groups[item.groupId]?.name : null}</TableCell>}
-              {admin &&  <TableCell>{item.phone}</TableCell>}
-              {admin &&  <TableCell>{item.model}</TableCell>} 
+              {admin && <TableCell>{item.groupId ? groups[item.groupId]?.name : null}</TableCell>}
+              {admin && <TableCell>{item.phone}</TableCell>}
+              {admin && <TableCell>{item.model}</TableCell>}
               <TableCell>{item.contact}</TableCell>
               <TableCell>{formatTime(item.expirationTime, 'date')}</TableCell>
               {manager && <TableCell><DeviceUsersValue deviceId={item.id} /></TableCell>}

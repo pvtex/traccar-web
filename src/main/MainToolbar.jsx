@@ -135,7 +135,7 @@ const MainToolbar = ({
               <MenuItem value="unknown">{`${t('deviceStatusUnknown')} (${deviceStatusCount('unknown')})`}</MenuItem>
             </Select>
           </FormControl>
-          {admin && ( 
+          {admin && (
             <FormControl>
               <InputLabel>{t('settingsGroups')}</InputLabel>
               <Select

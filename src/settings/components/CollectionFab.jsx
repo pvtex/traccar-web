@@ -3,7 +3,7 @@ import { Fab } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
-import { useRestriction, useAdministrator } from '../../common/util/permissions';
+import { useAdministrator } from '../../common/util/permissions';
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CollectionFab = ({ editPath, disabled }) => {
+const CollectionFab = ({ editPath }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
   const admin = useAdministrator();
-  const readonly = useRestriction('readonly');
 
   if (admin) {
     return (

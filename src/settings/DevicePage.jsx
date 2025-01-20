@@ -84,10 +84,10 @@ const DevicePage = () => {
                   helperText={t('deviceIdentifierHelp')}
                   disabled={Boolean(uniqueId)}
                 />
-	      )}
+              )}
             </AccordionDetails>
           </Accordion>
-          {admin && (  
+          {admin && (
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography variant="subtitle1">
@@ -149,7 +149,7 @@ const DevicePage = () => {
               />
             </AccordionDetails>
           </Accordion>
-          )} 
+          )}
           {item.id && (
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>

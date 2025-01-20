@@ -22,7 +22,7 @@ import {
 import { speedToKnots } from '../util/converter';
 import { useAttributePreference, usePreference } from '../util/preferences';
 import { useTranslation } from './LocalizationProvider';
-import { useDeviceReadonly, useAdministrator } from '../util/permissions';
+import { useAdministrator } from '../util/permissions';
 import AddressValue from './AddressValue';
 import GeofencesValue from './GeofencesValue';
 import DriverValue from './DriverValue';
@@ -31,7 +31,6 @@ const PositionValue = ({ position, property, attribute }) => {
   const t = useTranslation();
 
   const admin = useAdministrator();
-  const deviceReadonly = useDeviceReadonly();
 
   const device = useSelector((state) => state.devices.items[position.deviceId]);
 
@@ -111,16 +110,26 @@ const PositionValue = ({ position, property, attribute }) => {
       return (
         <>
           {formatValue(value)}
-          &nbsp;&nbsp;
-          {admin && <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>}
+          {' '}
+          {admin && (
+            <>
+              {' '}
+              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+            </>
+          )}
         </>
       );
     case 'hours':
       return (
         <>
           {formatValue(value)}
-          &nbsp;&nbsp;
-          {admin && <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>}
+          {' '}
+          {admin && (
+            <>
+              {' '}
+              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>
+            </>
+          )}
         </>
       );
     case 'network':
