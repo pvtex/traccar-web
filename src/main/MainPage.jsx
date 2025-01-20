@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
       position: 'fixed',
       left: 0,
       top: 50,
-      height: `calc(100% - 75px)`,
+      height: 'calc(100% - 75px)',
       width: theme.dimensions.drawerWidthDesktop,
       margin: '0px',
       zIndex: 3,

@@ -244,5 +244,5 @@ export default (t) => useMemo(() => ({
       name: t('commandFrequency'),
       type: 'number',
     }
-,  ]
+  ],
 }), [t]);
