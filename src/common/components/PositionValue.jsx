@@ -112,7 +112,10 @@ const PositionValue = ({ position, property, attribute }) => {
           {formatValue(value)}
           {' '}
           {admin && (
-            <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+            <>
+              {' '}
+              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+            </>
           )}
         </>
       );
@@ -122,7 +125,10 @@ const PositionValue = ({ position, property, attribute }) => {
           {formatValue(value)}
           {' '}
           {admin && (
-            <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>
+            <>
+              {' '}
+              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>
+            </>
           )}
         </>
       );
