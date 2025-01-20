@@ -109,18 +109,20 @@ const PositionValue = ({ position, property, attribute }) => {
     case 'totalDistance':
       return (
         <>
-          {formatValue(value)} &nbsp;&nbsp;
+          {formatValue(value)} 
+          &nbsp;&nbsp;
           {admin && (
-              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+            <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
           )}
         </>
       );
     case 'hours':
       return (
         <>
-          {formatValue(value)} &nbsp;&nbsp;
+          {formatValue(value)} 
+          &nbsp;&nbsp;
           {admin && (
-              <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>
+            <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}>&#9881;</Link>
           )}
         </>
       );
