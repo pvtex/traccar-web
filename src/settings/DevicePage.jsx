@@ -84,7 +84,7 @@ const DevicePage = () => {
                   helperText={t('deviceIdentifierHelp')}
                   disabled={Boolean(uniqueId)}
                 />
-                )}
+              )}
             </AccordionDetails>
           </Accordion>
           {admin && (

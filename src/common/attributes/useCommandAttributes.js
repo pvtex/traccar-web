@@ -236,13 +236,13 @@ export default (t) => useMemo(() => ({
       key: 'frequency',
       name: t('commandFrequency'),
       type: 'number',
-    }
+    },
   ],
   heartbeat: [
     {
       key: 'frequency',
       name: t('commandFrequency'),
       type: 'number',
-    }
+    },
   ],
 }), [t]);

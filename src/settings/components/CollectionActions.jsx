@@ -84,22 +84,18 @@ const CollectionActions = ({
             </Tooltip>
           ))}
           {!readonly && (
-            <>
-              <Tooltip title={t('sharedEdit')}>
-                <IconButton size="small" onClick={handleEdit}>
-                  <EditIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </>
+            <Tooltip title={t('sharedEdit')}>
+              <IconButton size="small" onClick={handleEdit}>
+                <EditIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           )}
           {admin && (
-            <>
-              <Tooltip title={t('sharedRemove')}>
-                <IconButton size="small" onClick={handleRemove}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </>
+            <Tooltip title={t('sharedRemove')}>
+              <IconButton size="small" onClick={handleRemove}>
+                <DeleteIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           )}
         </div>
       )}

@@ -111,7 +111,9 @@ const PositionValue = ({ position, property, attribute }) => {
         <>
           {formatValue(value)}
           &nbsp;&nbsp;
-          {admin && <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>}
+          {admin && (
+            <Link component={RouterLink} underline="none" to={`/settings/accumulators/${position.deviceId}`}></Link>
+          )}
         </>
       );
     case 'hours':
