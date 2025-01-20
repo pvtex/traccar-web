@@ -417,6 +417,8 @@
     "commandBuzzerOff": "Buzzer Aus",
     "commandBuzzerDuration": "Buzzer Zeit",
     "commandStatusLed": "Status LED",
+    "commandStatic": "Intervall in Ruhe",
+    "commandHeartbeat": "Heartbeat",
     "commandTitle": "Befehl",
     "commandSend": "Senden",
     "commandSent": "Befehl gesendet",

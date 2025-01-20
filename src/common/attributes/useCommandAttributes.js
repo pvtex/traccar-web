@@ -231,4 +231,18 @@ export default (t) => useMemo(() => ({
       type: 'boolean',
     },
   ],
+  static: [
+    {
+      key: 'frequency',
+      name: t('commandFrequency'),
+      type: 'number',
+    }
+  ],
+  heartbeat: [
+    {
+      key: 'frequency',
+      name: t('commandFrquency'),
+      type: 'number',
+    }
+,  ]
 }), [t]);
