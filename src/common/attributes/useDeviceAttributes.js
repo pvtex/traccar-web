@@ -26,4 +26,8 @@ export default (t) => useMemo(() => ({
     name: t('attributeForwardUrl'),
     type: 'string',
   },
+  liveModeTime: {
+    name: t('attributeLiveModeTime'),
+    type: 'string',
+  },
 }), [t]);

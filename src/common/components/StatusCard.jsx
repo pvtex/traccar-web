@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import Draggable from 'react-draggable';
@@ -26,6 +26,7 @@ import PublishIcon from '@mui/icons-material/Publish';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PendingIcon from '@mui/icons-material/Pending';
+import LiveModeIcon from '@mui/icons-material/Streetview';
 
 import { useTranslation } from './LocalizationProvider';
 import RemoveDialog from './RemoveDialog';
@@ -178,6 +179,39 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
     }
   }, [navigate, position]);
 
+  const livemodehandle = useCatch(async () => {
+    fetch('/api/commands/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: `{"id":22,"attributes":{},"deviceId":${deviceId},"type":"liveModeOn","textChannel":false,"description":"LiveMode"}`,
+    });
+  });
+
+  const [lmd, setLmd] = useState(null);
+  useEffect(() => {
+    async function getLmd() {
+      let livemodedis = true;
+      const deviceurl = `/api/devices/?id=${deviceId}`;
+      const lmc = await fetch(deviceurl);
+      let lmcres = '';
+      if (lmc.ok) {
+        lmcres = await lmc.text();
+        if (lmcres.indexOf('"liveModetime":null') > -1) {
+          livemodedis = false;
+        } else {
+          livemodedis = true;
+        }
+      } else {
+        livemodedis = true;
+        setLmd(livemodedis);
+        throw Error('Can not get LiveMode Status');
+      }
+      if (!position) { livemodedis = true; }
+      setLmd(livemodedis);
+    }
+    getLmd();
+  }, [deviceId]);
+
   return (
     <>
       <div className={classes.root}>
@@ -256,6 +290,14 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     <PendingIcon />
                   </IconButton>
                 </Tooltip>
+                <Tooltip title={t('liveModeActivate')}>
+                  <IconButton
+                    onClick={() => livemodehandle()}
+                    disabled={lmd}
+                  >
+                    <LiveModeIcon />
+                  </IconButton>
+                </Tooltip>
                 <Tooltip title={t('reportReplay')}>
                   <IconButton
                     onClick={() => navigate('/replay')}
@@ -264,6 +306,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     <ReplayIcon />
                   </IconButton>
                 </Tooltip>
+                {admin && (
                 <Tooltip title={t('commandTitle')}>
                   <IconButton
                     onClick={() => navigate(`/settings/device/${deviceId}/command`)}
@@ -272,6 +315,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     <PublishIcon />
                   </IconButton>
                 </Tooltip>
+                )}
                 <Tooltip title={t('sharedEdit')}>
                   <IconButton
                     onClick={() => navigate(`/settings/device/${deviceId}`)}
