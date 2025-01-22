@@ -422,6 +422,7 @@
     "commandHeartbeat": "Heartbeat",
     "commandTkWorkMode": "Workmode",
     "commandTkWorkModeDesc": "1-shock,2-time,3-off",
+    "commandLiveMode": "Live Mode",
     "commandTitle": "Command",
     "commandSend": "Send",
     "commandSent": "Command sent",

@@ -252,4 +252,11 @@ export default (t) => useMemo(() => ({
       type: 'number',
     }
   ],
+  liveMode: [
+    {
+      key: 'enable',
+      name: t('commandEnable'),
+      type: 'boolean',
+    },
+  ],
 }), [t]);
