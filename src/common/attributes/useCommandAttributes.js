@@ -245,4 +245,18 @@ export default (t) => useMemo(() => ({
       type: 'number',
     },
   ],
+  tkWorkMode: [
+    {
+      key: 'data',
+      name: t('commandTkWorkModeDesc'),
+      type: 'number',
+    },
+  ],
+  liveMode: [
+    {
+      key: 'enable',
+      name: t('commandEnable'),
+      type: 'boolean',
+    },
+  ],
 }), [t]);
