@@ -420,6 +420,8 @@
     "commandStatusLed": "Status LED",
     "commandStatic": "Intervall in Ruhe",
     "commandHeartbeat": "Heartbeat",
+    "commandTkWorkMode": "Workmode",
+    "commandTkWorkModeDesc": "1-shock,2-time,3-off",
     "commandTitle": "Befehl",
     "commandSend": "Senden",
     "commandSent": "Befehl gesendet",

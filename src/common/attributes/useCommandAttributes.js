@@ -245,4 +245,11 @@ export default (t) => useMemo(() => ({
       type: 'number',
     },
   ],
+  tkWorkmode: [
+    {
+      key: 'data',
+      name: t('commandTkWorkmodeDesc'),
+      type: 'number',
+    }
+  ],
 }), [t]);
