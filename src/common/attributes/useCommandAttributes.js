@@ -250,7 +250,7 @@ export default (t) => useMemo(() => ({
       key: 'data',
       name: t('commandTkWorkModeDesc'),
       type: 'number',
-    }
+    },
   ],
   liveMode: [
     {
