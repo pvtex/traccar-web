@@ -556,6 +556,8 @@
     "notificatorTelegram": "Telegram",
     "notificatorPushover": "Pushover",
     "liveModeActivate": "LiveMode",
+    "lightActivate": "Suchlicht",
+    "buzzerActivate": "Suchton",
     "reportReplay": "Abspielen",
     "reportCombined": "Kombiniert",
     "reportRoute": "Route",

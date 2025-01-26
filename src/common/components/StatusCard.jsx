@@ -27,6 +27,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PendingIcon from '@mui/icons-material/Pending';
 import LiveModeIcon from '@mui/icons-material/Streetview';
+import LightIcon from '@mui/icons-material/WbTwilight';
+import BuzzerIcon from '@mui/icons-material/VolumeUp';
 
 import { useTranslation } from './LocalizationProvider';
 import RemoveDialog from './RemoveDialog';
@@ -186,12 +188,16 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
       headers: { 'Content-Type': 'application/json' },
       body: `{"id":22,"attributes":{},"deviceId":${deviceId},"type":"liveModeOn","textChannel":false,"description":"LiveMode"}`,
     });
+  });
+  const buzzerhandle = useCatch(async () => {
     // buzzer
     fetch('/api/commands/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: `{"id":7,"attributes":{},"deviceId":${deviceId},"type":"buzzerOn","textChannel":false,"description":"Buzzer An"}`,
     });
+  });
+  const lighthandle = useCatch(async () => {
     // light
     fetch('/api/commands/send', {
       method: 'POST',
@@ -224,6 +230,57 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
     }
     getLmd();
   }, [deviceId]);
+
+  const [lightd, setLightd] = useState(null);
+  useEffect(() => {
+    async function getLightd() {
+      let lightdis = true;
+      const deviceurl = `/api/commands/send/?deviceId=${deviceId}`;
+      const lightc = await fetch(deviceurl);
+      let lightdres = '';
+      if (lightc.ok) {
+        lightdres = await lightc.text();
+        if (lightdres.indexOf('"type":"lightOn"') > -1) {
+          lightdis = false;
+        } else {
+          lightdis = true;
+        }
+      } else {
+        lightdis = true;
+        setLightd(lightdis);
+        throw Error('Can not get SearchLight Status');
+      }
+      if (!position) { lightdis = true; }
+      setLightd(lightdis);
+    }
+    getLightd();
+  }, [deviceId]);
+
+  const [buzzerd, setBuzzerd] = useState(null);
+  useEffect(() => {
+    async function getBuzzerd() {
+      let buzzerdis = true;
+      const deviceurl = `/api/commands/send/?deviceId=${deviceId}`;
+      const buzzerc = await fetch(deviceurl);
+      let buzzerdres = '';
+      if (buzzerc.ok) {
+        buzzerdres = await buzzerc.text();
+        if (buzzerdres.indexOf('"type":"buzzerOn"') > -1) {
+          buzzerdis = false;
+        } else {
+          buzzerdis = true;
+        }
+      } else {
+        buzzerdis = true;
+        setLightd(buzzerdis);
+        throw Error('Can not get SearchSound Status');
+      }
+      if (!position) { buzzerdis = true; }
+      setBuzzerd(buzzerdis);
+    }
+    getBuzzerd();
+  }, [deviceId]);
+
 
   return (
     <>
@@ -309,6 +366,22 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     disabled={lmd}
                   >
                     <LiveModeIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title={t('lightActivate')}>
+                  <IconButton
+                    onClick={() => lighthandle()}
+                    disabled={lightd}
+                  >
+                    <LightIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title={t('buzzerActivate')}>
+                  <IconButton
+                    onClick={() => buzzerhandle()}
+                    disabled={buzzerd}
+                  >
+                    <BuzzerIcon />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={t('reportReplay')}>
