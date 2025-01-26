@@ -180,10 +180,23 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
   }, [navigate, position]);
 
   const livemodehandle = useCatch(async () => {
+    // livemode
     fetch('/api/commands/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: `{"id":22,"attributes":{},"deviceId":${deviceId},"type":"liveModeOn","textChannel":false,"description":"LiveMode"}`,
+    });
+    // buzzer
+    fetch('/api/commands/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: `{"id":7,"attributes":{},"deviceId":${deviceId},"type":"buzzerOn","textChannel":false,"description":"Buzzer An"}`,
+    });
+    // light
+    fetch('/api/commands/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: `{"id":9,"attributes":{},"deviceId":${deviceId},"type":"lightOn","textChannel":false,"description":"Licht An"}`,
     });
   });
 
