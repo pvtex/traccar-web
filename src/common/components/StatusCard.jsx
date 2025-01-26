@@ -27,7 +27,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PendingIcon from '@mui/icons-material/Pending';
 import LiveModeIcon from '@mui/icons-material/Streetview';
-import LightIcon from '@mui/icons-material/WbTwilight';
+import LightIcon from '@mui/icons-material/Flare';
 import BuzzerIcon from '@mui/icons-material/VolumeUp';
 
 import { useTranslation } from './LocalizationProvider';
