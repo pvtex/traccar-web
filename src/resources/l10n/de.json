@@ -555,6 +555,7 @@
     "notificatorTraccar": "Traccar",
     "notificatorTelegram": "Telegram",
     "notificatorPushover": "Pushover",
+    "liveModeActivate": "LiveMode",
     "reportReplay": "Abspielen",
     "reportCombined": "Kombiniert",
     "reportRoute": "Route",
