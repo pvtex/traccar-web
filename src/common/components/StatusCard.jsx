@@ -281,7 +281,6 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
     getBuzzerd();
   }, [deviceId]);
 
-
   return (
     <>
       <div className={classes.root}>
