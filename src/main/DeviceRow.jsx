@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
     height: '25px',
     filter: 'brightness(0) invert(1)',
   },
+  avataricon: {
+    width: '25px',
+    height: '25px',
+  },
   batteryText: {
     fontSize: '0.75rem',
     fontWeight: 'normal',
@@ -86,7 +90,7 @@ const DeviceRow = ({ data, index, style }) => {
       >
         <ListItemAvatar>
           <Avatar>
-            <img className={classes.icon} src={mapIcons[mapIconKey(item.category)]} alt="" />
+            <img className={classes.avataricon} src={`/api/media/${item.uniqueId}/device.png`} alt="" />
           </Avatar>
         </ListItemAvatar>
         <ListItemText
