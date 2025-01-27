@@ -234,14 +234,12 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
   const [lmcolor, setLmcolor] = useState(null);
   useEffect(() => {
     function getLmcolor() {
-      let col =  {
-        "&.Mui-disabled": {}
-      };
-      if (position && lmd) { 
+      let col = {};
+      if (position && lmd) {
         col = {
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             backgroundColor: 'transparent',
-            color: "#00FF0080",
+            color: '#00FF0080',
           }
         };
       }
