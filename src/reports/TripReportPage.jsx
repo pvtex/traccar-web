@@ -26,6 +26,9 @@ import MapCamera from '../map/MapCamera';
 import MapGeofence from '../map/MapGeofence';
 import scheduleReport from './common/scheduleReport';
 import MapScale from '../map/MapScale';
+import { useAdministrator } from '../../common/util/permissions';
+
+
 
 const columnsArray = [
   ['startTime', 'reportStartTime'],
@@ -44,6 +47,8 @@ const columnsArray = [
 const columnsMap = new Map(columnsArray);
 
 const TripReportPage = () => {
+  const admin = useAdministrator();
+
   const navigate = useNavigate();
   const classes = useReportStyles();
   const t = useTranslation();
@@ -52,7 +57,7 @@ const TripReportPage = () => {
   const speedUnit = useAttributePreference('speedUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
 
-  const [columns, setColumns] = usePersistedState('tripColumns', ['startTime', 'endTime', 'distance', 'averageSpeed']);
+  const [columns, setColumns] = usePersistedState('tripColumns', ['startTime', 'endTime', 'distance', 'averageSpeed', 'maxSpeed', 'duration']);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
