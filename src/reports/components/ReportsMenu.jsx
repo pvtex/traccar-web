@@ -2,8 +2,8 @@ import React from 'react';
 import { Divider, List } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
-import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import PauseCircleFilledIcon from '@mui/icons-material/Pause';
+import PlayCircleFilledIcon from '@mui/icons-material/DirectionsRun';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -32,6 +32,8 @@ const ReportsMenu = () => {
           icon={<StarIcon />}
           selected={location.pathname === '/reports/combined'}
         />
+        {admin &&
+        <>
         <MenuItem
           title={t('reportRoute')}
           link="/reports/route"
@@ -50,18 +52,22 @@ const ReportsMenu = () => {
           icon={<PlayCircleFilledIcon />}
           selected={location.pathname === '/reports/trip'}
         />
+        </>
+        }
         <MenuItem
           title={t('reportStops')}
           link="/reports/stop"
           icon={<PauseCircleFilledIcon />}
           selected={location.pathname === '/reports/stop'}
         />
+        {admin &&
         <MenuItem
           title={t('reportSummary')}
           link="/reports/summary"
           icon={<FormatListBulletedIcon />}
           selected={location.pathname === '/reports/summary'}
         />
+        }
         <MenuItem
           title={t('reportChart')}
           link="/reports/chart"
