@@ -231,6 +231,25 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
     getLmd();
   }, [deviceId]);
 
+  const [lmcolor, setLmcolor] = useState(null);
+  useEffect(() => {
+    function getLmcolor() {
+      let col =  {
+        "&.Mui-disabled": {}
+      };
+      if (position && lmd) { 
+        col = {
+          "&.Mui-disabled": {
+            backgroundColor: 'transparent',
+            color: "#00FF0080",
+          }
+        };
+      }
+      setLmcolor(col);
+    }
+    getLmcolor();
+  }, [deviceId]);
+
   const [lightd, setLightd] = useState(null);
   useEffect(() => {
     async function getLightd() {
@@ -363,6 +382,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                   <IconButton
                     onClick={() => livemodehandle()}
                     disabled={lmd}
+                    sx={lmcolor}
                   >
                     <LiveModeIcon />
                   </IconButton>
