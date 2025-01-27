@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    top: 50,
+    height: 'calc(100% - 75px)',
   },
   mobileDrawer: {
     width: theme.dimensions.drawerWidthTablet,
