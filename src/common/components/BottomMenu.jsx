@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 
 import DescriptionIcon from '@mui/icons-material/QueryStats';
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from '@mui/icons-material/Build';
 import MapIcon from '@mui/icons-material/Map';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
