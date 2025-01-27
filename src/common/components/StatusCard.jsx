@@ -215,7 +215,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
       let lmcres = '';
       if (lmc.ok) {
         lmcres = await lmc.text();
-        if (lmcres.indexOf('"liveModetime":null') > -1) {
+        if (lmcres.indexOf('"liveModetime":"2000-01-01') > -1) {
           livemodedis = false;
         } else {
           livemodedis = true;
