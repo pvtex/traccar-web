@@ -240,7 +240,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
           '&.Mui-disabled': {
             backgroundColor: 'transparent',
             color: '#00FF0080',
-          }
+          },
         };
       }
       setLmcolor(col);
