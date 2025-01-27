@@ -26,7 +26,7 @@ const ReportsMenu = () => {
   return (
     <>
       <List>
-        {admin &&
+        {admin && (
         <>
         <MenuItem
           title={t('reportCombined')}
@@ -47,7 +47,7 @@ const ReportsMenu = () => {
           selected={location.pathname === '/reports/event'}
         />
         </>
-        }
+        )}
         <MenuItem
           title={t('reportTrips')}
           link="/reports/trip"
@@ -82,7 +82,7 @@ const ReportsMenu = () => {
           icon={<RouteIcon />}
         />
       </List>
-      {admin &&
+      {admin && (
       <>
       <Divider />
       <List>
@@ -110,7 +110,7 @@ const ReportsMenu = () => {
         )}
       </List>
       </>
-      }
+      )}
     </>
   );
 };

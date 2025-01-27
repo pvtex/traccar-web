@@ -9,7 +9,7 @@ import useReportStyles from '../common/useReportStyles';
 import { devicesActions, reportsActions } from '../../store';
 import SplitButton from '../../common/components/SplitButton';
 import SelectField from '../../common/components/SelectField';
-import { useAdministrator, useRestriction } from '../../common/util/permissions';
+import { useAdministrator } from '../../common/util/permissions';
 
 const ReportFilter = ({
   children, handleSubmit, handleSchedule, showOnly, ignoreDevice, multiDevice, includeGroups, loading,
@@ -18,7 +18,6 @@ const ReportFilter = ({
   const dispatch = useDispatch();
   const t = useTranslation();
 
-  const readonly = useRestriction('readonly');
   const admin = useAdministrator();
 
   const devices = useSelector((state) => state.devices.items);

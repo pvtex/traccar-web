@@ -42,7 +42,7 @@ const StopReportPage = () => {
   const distanceUnit = useAttributePreference('distanceUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
 
-  const [columns, setColumns] = usePersistedState('stopColumns', ['startTime', 'endTime', 'duration' ]);
+  const [columns, setColumns] = usePersistedState('stopColumns', ['startTime', 'endTime', 'duration']);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);

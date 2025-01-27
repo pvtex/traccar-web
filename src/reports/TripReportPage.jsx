@@ -38,7 +38,6 @@ const columnsArray = [
 const columnsMap = new Map(columnsArray);
 
 const TripReportPage = () => {
-
   const navigate = useNavigate();
   const classes = useReportStyles();
   const t = useTranslation();
