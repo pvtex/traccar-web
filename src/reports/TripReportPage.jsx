@@ -26,9 +26,6 @@ import MapCamera from '../map/MapCamera';
 import MapGeofence from '../map/MapGeofence';
 import scheduleReport from './common/scheduleReport';
 import MapScale from '../map/MapScale';
-import { useAdministrator } from '../../common/util/permissions';
-
-
 
 const columnsArray = [
   ['startTime', 'reportStartTime'],
@@ -47,7 +44,6 @@ const columnsArray = [
 const columnsMap = new Map(columnsArray);
 
 const TripReportPage = () => {
-  const admin = useAdministrator();
 
   const navigate = useNavigate();
   const classes = useReportStyles();
