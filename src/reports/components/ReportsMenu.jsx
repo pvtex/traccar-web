@@ -84,31 +84,29 @@ const ReportsMenu = () => {
       </List>
       {admin && (
       <>
-      <Divider />
-      <List>
-        <MenuItem
-          title={t('sharedLogs')}
-          link="/reports/logs"
-          icon={<NotesIcon />}
-          selected={location.pathname === '/reports/logs'}
-        />
-        {!readonly && (
+        <Divider />
+        <List>
           <MenuItem
-            title={t('reportScheduled')}
-            link="/reports/scheduled"
-            icon={<EventRepeatIcon />}
-            selected={location.pathname === '/reports/scheduled'}
+            title={t('sharedLogs')}
+            link="/reports/logs"
+            icon={<NotesIcon />}
+            selected={location.pathname === '/reports/logs'}
           />
-        )}
-        {admin && (
+          {!readonly && (
+            <MenuItem
+              title={t('reportScheduled')}
+              link="/reports/scheduled"
+              icon={<EventRepeatIcon />}
+              selected={location.pathname === '/reports/scheduled'}
+            />
+          )}
           <MenuItem
             title={t('statisticsTitle')}
             link="/reports/statistics"
             icon={<BarChartIcon />}
             selected={location.pathname === '/reports/statistics'}
           />
-        )}
-      </List>
+        </List>
       </>
       )}
     </>
