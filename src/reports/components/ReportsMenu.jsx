@@ -80,6 +80,8 @@ const ReportsMenu = () => {
           icon={<RouteIcon />}
         />
       </List>
+      {admin &&
+      <>
       <Divider />
       <List>
         <MenuItem
@@ -105,6 +107,8 @@ const ReportsMenu = () => {
           />
         )}
       </List>
+      </>
+      }
     </>
   );
 };
