@@ -198,7 +198,7 @@ const ReportFilter = ({
             onClick={handleClick}
             selected={button}
             setSelected={(value) => setButton(value)}
-            options={admin ? {
+            options={!admin ? {
               json: t('reportShow'),
               export: t('reportExport'),
               mail: t('reportEmail'),
