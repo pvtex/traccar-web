@@ -29,17 +29,11 @@ import MapScale from '../map/MapScale';
 
 const columnsArray = [
   ['startTime', 'reportStartTime'],
-  ['startOdometer', 'reportStartOdometer'],
-  ['startAddress', 'reportStartAddress'],
   ['endTime', 'reportEndTime'],
-  ['endOdometer', 'reportEndOdometer'],
-  ['endAddress', 'reportEndAddress'],
   ['distance', 'sharedDistance'],
   ['averageSpeed', 'reportAverageSpeed'],
   ['maxSpeed', 'reportMaximumSpeed'],
   ['duration', 'reportDuration'],
-  ['spentFuel', 'reportSpentFuel'],
-  ['driverName', 'sharedDriver'],
 ];
 const columnsMap = new Map(columnsArray);
 
