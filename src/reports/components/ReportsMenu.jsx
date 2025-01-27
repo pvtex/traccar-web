@@ -26,14 +26,14 @@ const ReportsMenu = () => {
   return (
     <>
       <List>
+        {admin &&
+        <>
         <MenuItem
           title={t('reportCombined')}
           link="/reports/combined"
           icon={<StarIcon />}
           selected={location.pathname === '/reports/combined'}
         />
-        {admin &&
-        <>
         <MenuItem
           title={t('reportRoute')}
           link="/reports/route"
@@ -61,19 +61,21 @@ const ReportsMenu = () => {
           selected={location.pathname === '/reports/stop'}
         />
         {admin &&
+        <>
         <MenuItem
           title={t('reportSummary')}
           link="/reports/summary"
           icon={<FormatListBulletedIcon />}
           selected={location.pathname === '/reports/summary'}
         />
-        }
         <MenuItem
           title={t('reportChart')}
           link="/reports/chart"
           icon={<TrendingUpIcon />}
           selected={location.pathname === '/reports/chart'}
         />
+        </>
+        }
         <MenuItem
           title={t('reportReplay')}
           link="/replay"
