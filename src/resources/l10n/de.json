@@ -433,6 +433,7 @@
     "commandDeviceIdentification": "Gerätekennung",
     "commandPositionSingle": "Einzelne Meldung",
     "commandPositionPeriodic": "Regelmäßige Meldungen",
+    "commandPositionPeriodicStatic": "Regelmäßige Meldungen statisch",
     "commandPositionStop": "Meldungen beenden",
     "commandEngineStop": "Motor gestoppt",
     "commandEngineResume": "Motor gestartet",

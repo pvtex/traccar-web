@@ -15,6 +15,13 @@ export default (t) => useMemo(() => ({
       type: 'number',
     },
   ],
+  positionPeriodicStatic: [
+    {
+      key: 'frequency',
+      name: t('commandFrequency'),
+      type: 'number',
+    },
+  ],
   setTimezone: [
     {
       key: 'timezone',
