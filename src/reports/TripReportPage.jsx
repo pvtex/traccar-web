@@ -32,8 +32,8 @@ const columnsArray = [
   ['endTime', 'reportEndTime'],
   ['distance', 'sharedDistance'],
   ['averageSpeed', 'reportAverageSpeed'],
-  ['maxSpeed', 'reportMaximumSpeed'],
   ['duration', 'reportDuration'],
+  ['maxSpeed', 'reportMaximumSpeed'],
 ];
 const columnsMap = new Map(columnsArray);
 
@@ -46,7 +46,7 @@ const TripReportPage = () => {
   const speedUnit = useAttributePreference('speedUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
 
-  const [columns, setColumns] = usePersistedState('tripColumns', ['startTime', 'endTime', 'distance', 'averageSpeed', 'maxSpeed', 'duration']);
+  const [columns, setColumns] = usePersistedState('tripColumns', ['startTime', 'endTime', 'distance', 'averageSpeed', 'duration']);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);

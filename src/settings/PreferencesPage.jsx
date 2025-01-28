@@ -158,6 +158,7 @@ const PreferencesPage = () => {
                   </Select>
                 </FormControl>
                 )}
+                {admin && (
                 <Autocomplete
                   multiple
                   freeSolo
@@ -181,6 +182,7 @@ const PreferencesPage = () => {
                     />
                   )}
                 />
+                )}
                 <FormControl>
                   <InputLabel>{t('mapLiveRoutes')}</InputLabel>
                   <Select
