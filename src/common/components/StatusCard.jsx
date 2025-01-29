@@ -320,18 +320,32 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                   </IconButton>
                 </CardMedia>
               ) : (
-                <div className={classes.header}>
-                  <Typography variant="body2" color="textSecondary">
-                    {device.name}
-                  </Typography>
-                  <IconButton
-                    size="small"
-                    onClick={onClose}
-                    onTouchStart={onClose}
+                <>
+                  <CardMedia
+                    className={classes.media}
+                    image="/device.png"
                   >
-                    <CloseIcon fontSize="small" />
-                  </IconButton>
-                </div>
+                    <IconButton
+                      size="small"
+                      onClick={onClose}
+                      onTouchStart={onClose}
+                    >
+                      <CloseIcon fontSize="small" className={classes.mediaButton} />
+                    </IconButton>
+                  </CardMedia>
+                  <div className={classes.header}>
+                    <Typography variant="body2" color="textSecondary">
+                      {device.name}
+                    </Typography>
+                    <IconButton
+                      size="small"
+                      onClick={onClose}
+                      onTouchStart={onClose}
+                    >
+                      <CloseIcon fontSize="small" />
+                    </IconButton>
+                  </div>
+                </>
               )}
               {position && (
                 <CardContent className={classes.content}>

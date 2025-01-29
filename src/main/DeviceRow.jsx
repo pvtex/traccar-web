@@ -65,6 +65,8 @@ const DeviceRow = ({ data, index, style }) => {
   const devicePrimary = useAttributePreference('devicePrimary', 'name');
   const deviceSecondary = useAttributePreference('deviceSecondary', '');
 
+  const deviceImage = item?.attributes?.deviceImage;
+
   const secondaryText = () => {
     let status;
     if (item.status === 'online' || !item.lastUpdate) {
@@ -87,11 +89,19 @@ const DeviceRow = ({ data, index, style }) => {
         onClick={() => dispatch(devicesActions.selectId(item.id))}
         disabled={!admin && item.disabled}
       >
-        <ListItemAvatar>
-          <Avatar>
-            <img className={classes.avataricon} src={`/api/media/${item.uniqueId}/device.png`} alt="" />
-          </Avatar>
-        </ListItemAvatar>
+        {deviceImage ? (
+          <ListItemAvatar>
+            <Avatar>
+              <img className={classes.avataricon} src={`/api/media/${item.uniqueId}/${deviceImage}`} alt="" />
+            </Avatar>
+          </ListItemAvatar>
+        ) : (
+          <ListItemAvatar>
+            <Avatar>
+              <img className={classes.avataricon} src="/device.png" alt="" />
+            </Avatar>
+          </ListItemAvatar>
+        )}
         <ListItemText
           primary={item[devicePrimary]}
           primaryTypographyProps={{ noWrap: true }}
