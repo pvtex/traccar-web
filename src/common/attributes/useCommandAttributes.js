@@ -8,6 +8,20 @@ export default (t) => useMemo(() => ({
       type: 'string',
     },
   ],
+  setApn: [
+    {
+      key: 'data',
+      name: t('commandData'),
+      type: 'string',
+    },
+  ],
+  positionPeriodicOrig: [
+    {
+      key: 'frequency',
+      name: t('commandFrequency'),
+      type: 'number',
+    },
+  ],
   positionPeriodic: [
     {
       key: 'frequency',
