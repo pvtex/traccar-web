@@ -268,7 +268,7 @@ export default (t) => useMemo(() => ({
   ],
   tkWorkMode: [
     {
-      key: 'data',
+      key: 'tkWorkMode',
       name: t('commandTkWorkModeDesc'),
       type: 'number',
     },
