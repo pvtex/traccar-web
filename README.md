@@ -1,5 +1,8 @@
 # [Traccar Web Interface](https://www.traccar.org)
 # customized for [GPS4PETS](https://www.gps4pets.de)
+
+# moved to [GPS4PETS REPO](https://github.com/GPS4PETS/Server)
+
 ## Overview
 
 Traccar is open source server for various GPS tracking devices. This repository contains web interface for the Traccar platform. For back-end checkout [main GPS4PETS repository](https://github.com/pvtex/traccar).
