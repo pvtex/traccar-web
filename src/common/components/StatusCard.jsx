@@ -248,6 +248,31 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
     getLmcolor();
   }, [deviceId]);
 
+  const [donline, setDonline] = useState(null);
+  useEffect(() => {
+    async function getDonline() {
+      let devonline = false;
+      const deviceurl = `/api/devices/?id=${deviceId}`;
+      const don = await fetch(deviceurl);
+      let donres = '';
+      if (don.ok) {
+        donres = await don.text();
+        if (donres.indexOf('"status":"online') > -1) {
+          devonline = true;
+        } else {
+          devonline = false;
+        }
+      } else {
+        devonline = false;
+        setDonline(devonline);
+        throw Error('Can not get LiveMode Status');
+      }
+      if (!position) { devonline = false; }
+      setDonline(devonline);
+    }
+    getDonline();
+  }, [deviceId]);
+
   const [lightd, setLightd] = useState(null);
   useEffect(() => {
     async function getLightd() {
@@ -399,6 +424,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     <LiveModeIcon />
                   </IconButton>
                 </Tooltip>
+                {!lightd && (
                 <Tooltip title={t('lightActivate')}>
                   <IconButton
                     onClick={() => lighthandle()}
@@ -407,6 +433,8 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     <LightIcon />
                   </IconButton>
                 </Tooltip>
+                )}
+                {!buzzerd && (
                 <Tooltip title={t('buzzerActivate')}>
                   <IconButton
                     onClick={() => buzzerhandle()}
@@ -415,6 +443,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     <BuzzerIcon />
                   </IconButton>
                 </Tooltip>
+                )}
                 <Tooltip title={t('reportReplay')}>
                   <IconButton
                     onClick={() => navigate('/replay')}
@@ -427,7 +456,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                 <Tooltip title={t('commandTitle')}>
                   <IconButton
                     onClick={() => navigate(`/settings/device/${deviceId}/command`)}
-                    disabled={disableActions}
+                    disabled={disableActions || !donline}
                   >
                     <PublishIcon />
                   </IconButton>
